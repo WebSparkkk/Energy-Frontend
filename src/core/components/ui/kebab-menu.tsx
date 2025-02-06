@@ -62,7 +62,7 @@ function KebabMenu({
                         setIsOpen(false)
                       }}
                       className={`
-                        ${curr.disabled ? "text-opacity-70 hover:bg-transparent cursor-not-allowed" : ""} 
+                        ${curr.disabled ? "text-opacity-70 hover:!bg-transparent !cursor-not-allowed" : ""} 
                         flex items-center gap-2 justify-end cursor-pointer px-2 text-left w-full p-1 hover:bg-zinc-200/60 
                         transition-[background-color] duration-120 rounded-sm ${curr.className}
                       `} 

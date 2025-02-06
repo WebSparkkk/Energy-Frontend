@@ -28,7 +28,11 @@ export interface ITimer {
   totalActiveTime:  number,
   totalPrice:       string,
   createdAt:        string,
-  updatedAt:        string
+  updatedAt:        string,
+  Client: {
+    id: string,
+    name: string
+  }
 }
 
 export interface ITimerPaymentInfo {

@@ -18,7 +18,7 @@ export function useMarkOrderItemAsReady () {
     onSuccess: () => {
       toast.success("تم تجهيز عنصر الطلب بنجاح")
       queryClient.invalidateQueries({
-        queryKey: ['bar']
+        queryKey: ['order_items']
       })
     },
     onError: () => {

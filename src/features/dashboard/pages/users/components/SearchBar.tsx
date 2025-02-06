@@ -44,7 +44,7 @@ export default function SearchBar() {
         className="w-full sm:w-auto"
       >
         <Plus className="h-5 w-5 ml-2" />
-        إضافة عضو
+        إضافة مستخدم
       </Button>
     </div>
   );

@@ -61,12 +61,11 @@ export default function InventoryTable() {
       <h3 className='mb-3 font-semibold'>قائمة المخزون</h3>
       {
         !isLoading ? (
-          <Table columns='grid-cols-[1fr_1fr_100px_1fr_1fr_1fr_60px]'>
+          <Table columns='grid-cols-[1fr_1fr_1fr_1fr_1fr_60px]'>
             <Table.Header>
               <Table.Cell>المنتج</Table.Cell>
               <Table.Cell>الوحدة</Table.Cell>
               <Table.Cell>الكمية</Table.Cell>
-              <Table.Cell>سعر الشراء لكل وحدة</Table.Cell>
               <Table.Cell>سعر البيع لكل وحدة</Table.Cell>
               <Table.Cell>إجمالي سعر الشراء</Table.Cell>
               <Table.Cell> </Table.Cell>
@@ -82,7 +81,6 @@ export default function InventoryTable() {
                     </Tag>
                   </Table.Cell>
                   <Table.Cell>{Number(curr.stockQuantity)}</Table.Cell>
-                  <Table.Cell>{formatCurrency(Number(curr.unitBuyingPrice))}</Table.Cell>
                   <Table.Cell>{formatCurrency(Number(curr.sellingPricePerUnit))}</Table.Cell>
                   <Table.Cell>{formatCurrency(Number(curr.totalBuyingPrice))}</Table.Cell>
                   <Table.Cell>

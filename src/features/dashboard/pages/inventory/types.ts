@@ -26,7 +26,6 @@ export interface IInventoryItemPayload {
   unitType: TInventoryUnitType,
   stockQuantity: number,
   totalBuyingPrice : number,
-  unitBuyingPrice: number,
   sellingPricePerUnit: number
 }
 

@@ -1,4 +1,4 @@
-import { ComponentProps, forwardRef, useState } from "react"
+import { ComponentProps, forwardRef, useLayoutEffect, useState } from "react"
 import Async from "react-select/async"
 import { getSelectStyles } from "./constants"
 
@@ -21,6 +21,7 @@ const AsyncSelect = forwardRef<any,TAsyncSelectProps>(function ({
   ...props 
 }, ref) {
   const [isLoading,setIsLoading] = useState<boolean>(false)
+  const [defaultOptions,setDefaultOptions] = useState<TSelectOption[]>([])
 
   async function loadOptions (inputValue: string) {
     let options:TSelectOption[] = []
@@ -33,6 +34,13 @@ const AsyncSelect = forwardRef<any,TAsyncSelectProps>(function ({
     return options
   }
 
+  useLayoutEffect(() => {
+    (async () => {
+      const options = await loadOptions("")
+      setDefaultOptions(options)
+    })()
+  },[])
+
   return (
     <Async
       ref={ref}
@@ -41,6 +49,7 @@ const AsyncSelect = forwardRef<any,TAsyncSelectProps>(function ({
       isLoading={isLoading}
       onFocus={() => setIsLoading(false)}
       key={dependencyString}
+      defaultOptions={defaultOptions}
       noOptionsMessage={noOptionsMessage ? noOptionsMessage : _ => "لا يوجد بيانات"}
       loadingMessage={_ => "جاري جلب البيانات"}
       styles={getSelectStyles("async")}

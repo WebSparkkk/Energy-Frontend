@@ -39,14 +39,6 @@ export const inventoryFormSchema =  z.object({
     .nonempty({
       message: "إجمالي سعر الشراء مطلوب.",
     }),
-  unitBuyingPrice: z
-    .string()
-    .regex(/^\d+(\.\d{1,2})?$/, {
-      message: "سعر شراء الوحدة يجب أن يكون رقماً صالحاً.",
-    })
-    .nonempty({
-      message: "سعر شراء الوحدة مطلوب.",
-    }),
   sellingPricePerUnit: z
     .string()
     .regex(/^\d+(\.\d{1,2})?$/, {

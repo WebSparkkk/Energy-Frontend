@@ -51,8 +51,9 @@ export default function OrdersTable() {
   return (
     <div>
       <h3 className='mb-3 font-semibold'>قائمة الطلبات</h3>
-      <Table className='overflow-auto' columns='grid-cols-[1fr_240px_1fr_200px_60px]'>
+      <Table className='overflow-auto' columns='grid-cols-[1fr_1fr_240px_1fr_200px_60px]'>
         <Table.Header>
+          <Table.Cell>اسم العميل</Table.Cell>
           <Table.Cell>التاريخ</Table.Cell>
           <Table.Cell>الحالة</Table.Cell>
           <Table.Cell>التكلفة</Table.Cell>
@@ -67,6 +68,7 @@ export default function OrdersTable() {
               className='hover:bg-zinc-100 duration-100 cursor-pointer'
               key={curr.id}
             >
+              <Table.Cell>{curr.client.name}</Table.Cell>
               <Table.Cell>{formatISODate(curr.createdAt)}</Table.Cell>
               <Table.Cell>
                 <Tag variant={orderStatusAssets[curr.paymentStatus].color}>

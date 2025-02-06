@@ -21,12 +21,15 @@ import {
 import { cn } from '@/core/lib/utils/utils';
 import { Button } from '@/core/components/ui/button';
 import { useLogout } from '@/core/hooks/useLogout';
+import { useAuth } from '@/core/providers/auth-provider';
+import { useLayoutEffect, useState } from 'react';
+import { USER_ROLES } from '@/features/auth/login/types';
 
 interface DashboardSidebarProps {
   onClose: () => void;
 }
 
-const menuItems = [
+const cashierRoutes = [
   { icon: <PieChart className="h-5 w-5" />, label: 'لوحة التحكم', path: '/dashboard' },
   { icon: <DollarSign className="h-5 w-5" />, label: 'الكاشير', path: '/dashboard/cashier' },
   { icon: <Users className="h-5 w-5" />, label: 'الأعضاء', path: '/dashboard/members' },
@@ -37,16 +40,28 @@ const menuItems = [
   { icon: <Clock className="h-5 w-5" />, label: 'المؤقتات', path: '/dashboard/timers' },
   { icon: <Truck className="h-5 w-5" />, label: 'الموردين', path: '/dashboard/suppliers' },
   { icon: <Wallet className="h-5 w-5" />, label: 'الخزينة', path: '/dashboard/treasury' },
-  { icon: <BarChart3 className="h-5 w-5" />, label: 'تحليل الإيرادات', path: '/dashboard/revenue' },
   { icon: <ScrollText className="h-5 w-5" />, label: 'السجلات', path: '/dashboard/logs' },
-  { icon: <UserCog className="h-5 w-5" />, label: 'المستخدمين', path: '/dashboard/users' },
   { icon: <ChefHat className="h-5 w-5" />, label: 'المطبخ', path: '/dashboard/bar' },
+]
+
+const adminRoutes = [
+  { icon: <BarChart3 className="h-5 w-5" />, label: 'تحليل الإيرادات', path: '/dashboard/revenue' },
+  { icon: <UserCog className="h-5 w-5" />, label: 'المستخدمين', path: '/dashboard/users' },
   { icon: <Settings className="h-5 w-5" />, label: 'الإعدادات', path: '/dashboard/settings' },
 ];
 
 export function DashboardSidebar({ onClose }: DashboardSidebarProps) {
+
+  const { userRole } = useAuth()
   const location = useLocation();
   const { logout } = useLogout()
+
+  const [routes,setRoutes] = useState<typeof cashierRoutes>(cashierRoutes)
+
+  useLayoutEffect(() => {
+    if (userRole === USER_ROLES.ADMIN)
+      setRoutes(prev => [...prev,...adminRoutes])
+  },[userRole])
 
   return (
     <div className="flex flex-col bg-white">
@@ -67,7 +82,7 @@ export function DashboardSidebar({ onClose }: DashboardSidebarProps) {
 
       <nav className="p-4 overflow-auto h-[82.5vh]">
         <ul>
-          {menuItems.map((item) => (
+          {routes.map((item) => (
             <li key={item.path}>
               <Link
                 to={item.path}

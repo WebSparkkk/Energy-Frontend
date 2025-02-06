@@ -31,7 +31,6 @@ export default function AddInventoryForm() {
         value: string
       },
       totalBuyingPrice:"0",
-      unitBuyingPrice:"0",
       unitType: inventoryUnitTypeList[0],
     },
     resolver: zodResolver(inventoryFormSchema)
@@ -43,7 +42,6 @@ export default function AddInventoryForm() {
     stockQuantity, 
     supplier, 
     totalBuyingPrice, 
-    unitBuyingPrice, 
     unitType
   }: TFormFields) {
     if (!isSubmitting) {
@@ -52,7 +50,6 @@ export default function AddInventoryForm() {
         sellingPricePerUnit: Number(sellingPricePerUnit),
         stockQuantity: Number(stockQuantity),
         totalBuyingPrice: Number(totalBuyingPrice),
-        unitBuyingPrice: Number(unitBuyingPrice),
         unitType: unitType.value,
         supplierId: supplier.value
       },{
@@ -101,11 +98,6 @@ export default function AddInventoryForm() {
             label='الكمية'
             type='number'
             name='stockQuantity'
-          />
-          <FormInput
-            label='سعر الشراء لكل وحدة'
-            name='unitBuyingPrice'
-            type='number'
           />
           <FormInput
             label='سعر البيع لكل وحدة'

@@ -33,8 +33,9 @@ export default function TimerTable() {
   return (
     <div className='w-full'>
       <h3 className='mb-3 font-semibold'>قائمة المؤقتات</h3>
-      <Table columns={`grid-cols-[.7fr_150px_150px_.7fr_.5fr_170px_60px]`}>
+      <Table columns={`grid-cols-[.7fr_.7fr_150px_150px_.7fr_.5fr_170px_60px]`}>
         <Table.Header>
+          <Table.Cell>اسم العميل</Table.Cell>
           <Table.Cell>السعر بالساعة</Table.Cell>
           <Table.Cell>حالة المؤقت</Table.Cell>
           <Table.Cell>حالة الدفع</Table.Cell>
@@ -110,6 +111,7 @@ function TimerTableRow ({ timer }: {
 
   return (
     <Table.Row>
+      <Table.Cell>{timer.Client.name}</Table.Cell>
       <Table.Cell>{formatCurrency(Number(timer.hourlyRate))}</Table.Cell>
       <Table.Cell>
         <Tag variant={timerColors[timer.timerStatus]}>

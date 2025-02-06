@@ -29,7 +29,11 @@ export interface IOrder {
     createdAt: string,
     updatedAt: string,
     inventoryItem: IInventory
-  }[]
+  }[],
+  client: {
+    id: string,
+    name: string
+  }
 }
 
 export interface IOrderItemPayload {
