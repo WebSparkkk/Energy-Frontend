@@ -13,7 +13,11 @@ export interface IBarItem {
   quantity: 1,
   status: TBarItemStatus,
   createdAt: string,
-  updatedAt: string
+  updatedAt: string,
+  inventoryItem: {
+    id: string,
+    name: string
+  } 
 }
 
 export interface IMarkBarItemAsReadyPayload {

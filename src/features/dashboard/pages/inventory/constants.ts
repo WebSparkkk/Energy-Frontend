@@ -7,18 +7,18 @@ export const inventoryUnitTypeAssets: Record<INVENTORY_UNIT_TYPE,{
 }> = {
   [INVENTORY_UNIT_TYPE.GRAM]: {
     color: "blue",
-    label: "Gram",
+    label: "جرام",
   },
   [INVENTORY_UNIT_TYPE.KILOGRAM]: {
     color: "purple",
-    label: "KG",
+    label: "كيلو غرام",
   },
   [INVENTORY_UNIT_TYPE.LITRE]: {
     color: "orange",
-    label: "Litre",
+    label: "لتر",
   },
   [INVENTORY_UNIT_TYPE.PIECE]: {
     color: "green",
-    label: "Piece",
+    label: "قطعة",
   },
 }

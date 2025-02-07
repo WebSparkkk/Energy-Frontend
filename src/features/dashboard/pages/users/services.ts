@@ -1,5 +1,5 @@
 import { httpService } from "@/core/lib/services"
-import { IUserPayload } from "./types"
+import { IEditUserPayload, IUserPayload } from "./types"
 
 export async function getUsersService ({
   page,
@@ -23,7 +23,7 @@ export async function editUserService ({
   userId
 }:{
   userId: string, 
-  user: IUserPayload
+  user: IEditUserPayload
 }) {
   const res = await httpService.put(`/admin-users/${userId}`, user)
   return res.data

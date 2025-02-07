@@ -25,8 +25,9 @@ function BarTable() {
   return (
     <div>
       <h3 className='mb-3 font-semibold'>قائمة عناصر الطلبات</h3>
-      <Table className='overflow-auto' columns='grid-cols-[125px_170px_1fr_170px_60px]'>
+      <Table className='overflow-auto' columns='grid-cols-[1fr_125px_170px_1fr_170px_60px]'>
         <Table.Header>
+          <Table.Cell>اسم عنصر المخزون</Table.Cell>
           <Table.Cell>الكمية</Table.Cell>
           <Table.Cell>الحالة</Table.Cell>
           <Table.Cell>تاريخ الإنشاء</Table.Cell>
@@ -84,6 +85,7 @@ function BarRow ({ barItem }: { barItem: IBarItem }) {
 
   return (
     <Table.Row>
+      <Table.Cell>{barItem.inventoryItem.name}</Table.Cell>
       <Table.Cell>{barItem.quantity}</Table.Cell>
       <Table.Cell>
         <Tag variant={barItemStatusAssets[barItem.status].color}>

@@ -59,9 +59,12 @@ export function DashboardSidebar({ onClose }: DashboardSidebarProps) {
   const [routes,setRoutes] = useState<typeof cashierRoutes>(cashierRoutes)
 
   useLayoutEffect(() => {
+    setRoutes(routes)
     if (userRole === USER_ROLES.ADMIN)
       setRoutes(prev => [...prev,...adminRoutes])
   },[userRole])
+
+
 
   return (
     <div className="flex flex-col bg-white">

@@ -19,3 +19,25 @@ export const userFormSchema = z.object({
   dailyRate: z.string().min(1, { message: "التقييم اليومي يجب أن يكون أكبر من أو يساوي 0" }),
 });
 
+
+export const editUserFormSchema = z.object({
+  username: z.string().min(1, { message: "اسم المستخدم مطلوب" }),
+  email: z.string().email({ message: "يرجى إدخال بريد إلكتروني صالح" }),
+  role: z.object({
+    value: z.enum([
+      USER_ROLES.ADMIN,
+      USER_ROLES.CASHIER,
+      USER_ROLES.EMPLOYEE,
+      USER_ROLES.MANAGER
+    ]),
+    label: z.string()
+  },{
+    message: "الرجاء اختيار دور المستخدم"
+  }),
+  password: z.string().optional().refine(value => {
+    if (value === "" || value === undefined)
+      return true
+    else if (value.length < 6) return false
+  },{ message: "كلمة المرور يجب أن تكون على الأقل 6 أحرف" }),
+  dailyRate: z.string().min(1, { message: "التقييم اليومي يجب أن يكون أكبر من أو يساوي 0" }),
+});

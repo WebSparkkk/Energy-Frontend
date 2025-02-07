@@ -1,12 +1,12 @@
 import { useMutation, useQueryClient } from "react-query"
 import { editUserService } from "../services"
-import { IUserPayload } from "../types"
+import { IEditUserPayload } from "../types"
 import { AxiosError } from "axios"
 import toast from "react-hot-toast"
 
 type TPayload = {
   userId: string,
-  user: IUserPayload
+  user: IEditUserPayload
 }
 export function useEditUser () {
 

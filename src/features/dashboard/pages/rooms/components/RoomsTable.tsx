@@ -3,7 +3,6 @@ import { useGetRooms } from '../hooks/useGetRooms';
 import Error from '@/core/components/ui/error';
 import Spinner from '@/core/components/ui/spinner';
 import { formatCurrency } from '@/core/lib/utils/currency';
-import { ROOM_STATUSES } from '../types';
 import Tag, { TTagColorVariant } from '@/core/components/ui/tag';
 import KebabMenu from '@/core/components/ui/kebab-menu';
 import { BsThreeDotsVertical } from 'react-icons/bs';
@@ -13,6 +12,7 @@ import { useDeleteRoom } from '../hooks/useDeleteRoom';
 import { useSearchParams } from 'react-router-dom';
 import { TRoomsProviderValue, useRoomsProvider } from '../RoomsPage';
 import Pagination from '@/core/components/ui/pagination';
+import { roomStatusAssets } from '../constants';
 
 export default function RoomsTable() {
 
@@ -62,8 +62,8 @@ export default function RoomsTable() {
                   <Table.Cell>{curr.name}</Table.Cell>
                   <Table.Cell>{curr.capacity}</Table.Cell>
                   <Table.Cell>
-                    <Tag variant={roomStatus[curr.status].color}>
-                      {roomStatus[curr.status].label}
+                    <Tag variant={roomStatusAssets[curr.status].color}>
+                      {roomStatusAssets[curr.status].label}
                     </Tag>
                   </Table.Cell>
                   <Table.Cell>{formatCurrency(Number(curr.hourlyRate))}</Table.Cell>
@@ -99,18 +99,4 @@ export default function RoomsTable() {
       }
     </div>
   );
-}
-
-const roomStatus: Record<ROOM_STATUSES,{
-  color: TTagColorVariant,
-  label: string
-}> = {
-  [ROOM_STATUSES.AVAILABLE]: {
-    label: "Available",
-    color: "green"
-  },
-  [ROOM_STATUSES.NOT_AVAILABLE]: {
-    label: "Not Available",
-    color: "red"
-  }
 }

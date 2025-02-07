@@ -19,3 +19,12 @@ export interface IUserPayload {
   role: TUserRole,
   dailyRate: number
 }
+
+
+export interface IEditUserPayload {
+  username: string,
+  email: string,
+  password?: string,
+  role: TUserRole,
+  dailyRate: number
+}

@@ -6,7 +6,7 @@ import FormSelect from '@/core/components/form/form-select'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { TUserProviderValue, useUsersProvider } from '../UsersPage'
-import { userFormSchema } from '../schema'
+import { editUserFormSchema } from '../schema'
 import { useEditUser } from '../hooks/useEditUser'
 import { useGetUser } from '../hooks/useGetUser'
 import { useSearchParams } from 'react-router-dom'
@@ -15,8 +15,9 @@ import { useEffect } from 'react'
 import { USER_ROLES } from '@/features/auth/login/types'
 import { z } from 'zod'
 import toast from 'react-hot-toast'
+import { IEditUserPayload } from '../types'
 
-type TFormFields = z.infer<typeof userFormSchema>
+type TFormFields = z.infer<typeof editUserFormSchema>
 
 function EditUserForm() {
   const { 
@@ -40,7 +41,7 @@ function EditUserForm() {
       role: roles[2],
       dailyRate: "0"
     },
-    resolver: zodResolver(userFormSchema),
+    resolver: zodResolver(editUserFormSchema),
     values: {
       dailyRate: user?.dailyRate?.toString() || "0",
       email: user?.email || "",
@@ -50,7 +51,6 @@ function EditUserForm() {
     }
   })
 
-  
   useEffect(() => {
     if (!isLoading && !user) {
       searchParams.delete("user-id")
@@ -74,12 +74,18 @@ function EditUserForm() {
   },[isEditUserFormVisible])
 
   function handleSubmit(fields: TFormFields) {
+    const payload: IEditUserPayload = {
+      dailyRate: Number(fields.dailyRate),
+      email: fields.email,
+      role: fields.role.value,
+      username: fields.username
+    }
+
+    if (!!fields.password)
+      payload.password = fields.password
+    
     mutate({
-      user: {
-        ...fields,
-        role: fields.role.value,
-        dailyRate: +fields.dailyRate
-      },
+      user: payload,
       userId
     }, {
       onSuccess:()=>{

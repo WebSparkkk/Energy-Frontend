@@ -10,10 +10,10 @@ import { RiRewindStartFill } from "react-icons/ri";
 import { IoIosPause } from "react-icons/io"
 import { FaRegStopCircle } from "react-icons/fa"
 import { ITimer, TIMER_PAYMENT_STATUSES, TIMER_STATUSES } from "../types"
-import Tag, { TTagColorVariant } from "@/core/components/ui/tag"
+import Tag from "@/core/components/ui/tag"
 import { useAppPopupProvider } from "@/core/providers/app-popup/app-popup-provider"
 import { TbCash } from "react-icons/tb";
-import { timerPopupValues } from "../constants"
+import { timerPaymentStatusAssets, timerPopupValues, timerStatusAssets } from "../constants"
 import { useEndTimer } from "../hooks/useEndTimer"
 import { useStartTimer } from "../hooks/useStartTimer"
 import { usePauseTimer } from "../hooks/usePauseTimer"
@@ -114,13 +114,13 @@ function TimerTableRow ({ timer }: {
       <Table.Cell>{timer.Client.name}</Table.Cell>
       <Table.Cell>{formatCurrency(Number(timer.hourlyRate))}</Table.Cell>
       <Table.Cell>
-        <Tag variant={timerColors[timer.timerStatus]}>
-          {timer.timerStatus}
+        <Tag variant={timerStatusAssets[timer.timerStatus].color}>
+          {timerStatusAssets[timer.timerStatus].label}
         </Tag>
       </Table.Cell>
       <Table.Cell>
-        <Tag variant={timerPaymentColors[timer.paymentStatus]}>
-          {timer.paymentStatus}
+        <Tag variant={timerPaymentStatusAssets[timer.paymentStatus].color}>
+          {timerPaymentStatusAssets[timer.paymentStatus].label}
         </Tag>
       </Table.Cell>
       <Table.Cell>{formatTime(timer.totalActiveTime)}</Table.Cell>
@@ -171,15 +171,4 @@ function TimerTableRow ({ timer }: {
       </Table.Cell>
     </Table.Row>
   )
-}
-
-const timerColors: Record<TIMER_STATUSES,TTagColorVariant > = {
-  [TIMER_STATUSES.ACTIVE]: "green",
-  [TIMER_STATUSES.PAUSED]: "yellow",
-  [TIMER_STATUSES.ENDED]: "gray"
-}
-
-const timerPaymentColors: Record<TIMER_PAYMENT_STATUSES,TTagColorVariant> = {
-  [TIMER_PAYMENT_STATUSES.PAID]: "green",
-  [TIMER_PAYMENT_STATUSES.PENDING]: "yellow",
 }
