@@ -18,10 +18,10 @@ export default function TreasuryBalance() {
         <CardTitle>الرصيد الحالي</CardTitle>
       </CardHeader>
       <CardContent>
-        { error && <Error>{error.message}</Error> }
         {
           !isLoading ? (
-          <div className="space-y-4">
+          error ? <Error>{error.message}</Error> : (
+            <div className="space-y-4">
             <div className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
               <div className="flex items-center gap-3">
                 <div className="p-2 bg-secondary-100 rounded-lg">
@@ -70,6 +70,7 @@ export default function TreasuryBalance() {
               </span>
             </div>
           </div>
+          )
           ) : <Spinner/>
         }
       </CardContent>

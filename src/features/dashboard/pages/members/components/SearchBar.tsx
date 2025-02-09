@@ -6,6 +6,7 @@ import { useDebounce } from 'use-debounce';
 import { useSearchParams } from 'react-router-dom';
 import { TMembersProviderValue, useMembersProvider } from '../MembersPage';
 import DownloadButton from '@/core/components/ui/download-button';
+import { BASE_URL } from '@/core/lib/services';
 
 export default function SearchBar() {
 
@@ -50,7 +51,7 @@ export default function SearchBar() {
         </Button>
         <DownloadButton
           label='تحميل ملف إكسل'
-          downloadURL='/clients/excel'
+          downloadURL={BASE_URL+"/clients/export"}
         />
       </div>
     </div>

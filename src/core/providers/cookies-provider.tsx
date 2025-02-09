@@ -24,7 +24,7 @@ function CookiesAccessProvider({ children }: TChildren) {
         removeCookie,
       }}
     >
-      <CookiesProvider>
+      <CookiesProvider defaultSetOptions={{ path: "/"}}>
         {children}
       </CookiesProvider>
     </CookiesContext.Provider>

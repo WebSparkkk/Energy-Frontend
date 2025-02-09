@@ -36,7 +36,7 @@ export default function TransactionsList() {
         <CardContent className='flex-1 overflow-hidden p-2'>
           <div className="overflow-auto h-full flex flex-col gap-4 p-4">
             {
-              !isLoading ? (
+              !isLoading && !error ? (
                 data?.data.map((transaction) => (
                   <div
                     key={transaction.id}

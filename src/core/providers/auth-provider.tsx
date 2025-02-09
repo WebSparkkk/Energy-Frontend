@@ -3,6 +3,7 @@ import { httpService } from '../lib/services';
 import { useCookiesAccessProvider } from './cookies-provider';
 import { useLogout } from '../hooks/useLogout';
 import { ILocalUser, TUserRole } from '@/features/auth/login/types';
+import { isatty } from 'tty';
 
 type TAuthProvider = {
   isAuth: boolean,
@@ -56,7 +57,7 @@ function AuthProvider({ children }: TChildren) {
         httpService.interceptors.response.eject(responseInterceptor);
         httpService.interceptors.request.eject(requestInterceptor);
       };
-    },[]
+    },[isAuth]
   )
 
   return (

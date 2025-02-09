@@ -21,8 +21,8 @@ export function useLogin () {
           username: user.username
         }
 
-        setCookie("access_token", token, { path: "/"})
-        setCookie("user_role", user.role, { path: "/"})
+        setCookie("access_token", token, { path: "/" })
+        setCookie("user_role", user.role, { path: "/" })
         localStorage.setItem("user", JSON.stringify(localUser))
 
         toast.success("Logged in Successfully")

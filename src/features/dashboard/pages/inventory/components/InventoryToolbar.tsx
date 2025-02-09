@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import { useDebounce } from 'use-debounce';
 import { TInventoryProviderValue, useInventoryProvider } from '../InventoryPage';
 import DownloadButton from '@/core/components/ui/download-button';
+import { BASE_URL } from '@/core/lib/services';
 
 export default function InventoryToolbar() {
 
@@ -49,7 +50,7 @@ export default function InventoryToolbar() {
         </Button>
         <DownloadButton
           label='تحميل ملف إكسل'
-          downloadURL='/clients/excel'
+          downloadURL={BASE_URL+"/inventory/export"}
         />
       </div>
     </div>

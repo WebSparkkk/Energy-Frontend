@@ -5,8 +5,8 @@ import { getDashboardInfosService } from "./services";
 
 export function useGetDashboardData () {
   return useQuery<TResponse<IDashboardInfos>,AxiosError<unknown>>({
-    queryFn:getDashboardInfosService,
+    queryFn: getDashboardInfosService,
     queryKey:["dashboard_infos"],
-    retry: 0
+    retry: 0,
   })
 }

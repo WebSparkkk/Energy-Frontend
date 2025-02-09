@@ -19,10 +19,10 @@ export default function TransactionStats() {
         <CardTitle>إحصائيات اليوم</CardTitle>
       </CardHeader>
       <CardContent>
-        { error && <Error>{error.message}</Error> }
         {
           !isLoading ? (
-            <div className="space-y-4">
+            error ? <Error>{error.message}</Error> : (
+              <div className="space-y-4">
               <div className="flex items-center justify-between p-4 bg-green-50 rounded-lg">
                 <div className="flex items-center gap-3">
                   <div className="p-2 bg-green-100 rounded-lg">
@@ -71,6 +71,7 @@ export default function TransactionStats() {
                 }
               </div>
             </div>
+            )
           ) : <Spinner/>
         }
       </CardContent>
