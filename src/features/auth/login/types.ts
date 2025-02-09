@@ -2,7 +2,8 @@ export enum USER_ROLES {
   ADMIN = "ADMIN",
   CASHIER = "CASHIER",
   EMPLOYEE = "EMPLOYEE",
-  MANAGER = "MANAGER"
+  MANAGER = "MANAGER",
+  CHIEF = "CHIEF",
 }
 
 export type TUserRole = `${USER_ROLES}`

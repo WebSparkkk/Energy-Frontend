@@ -120,7 +120,8 @@ function App() {
                   redirectTo='/dashboard'
                   roles={[
                     USER_ROLES.ADMIN, 
-                    USER_ROLES.CASHIER
+                    USER_ROLES.CASHIER,
+                    USER_ROLES.CHIEF
                   ]} 
                 >
                   <InventoryPage />
@@ -210,8 +211,23 @@ function App() {
               } 
             />
             
-
-            <Route path="bar" element={<BarPage />} />
+            <Route 
+              path="users" 
+              element={
+                <ProtectedRoute roles={[USER_ROLES.ADMIN]} redirectTo='/dashboard'>
+                  <UsersPage />
+                </ProtectedRoute>
+              } 
+            />
+            
+            <Route 
+              path="bar" 
+              element={
+                <ProtectedRoute roles={[USER_ROLES.CHIEF,USER_ROLES.ADMIN]} redirectTo='/dashboard'>
+                  <BarPage />
+                </ProtectedRoute>
+              } 
+            />
           </Route>
 
         </Routes>

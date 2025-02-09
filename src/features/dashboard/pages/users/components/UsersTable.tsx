@@ -12,6 +12,7 @@ import { TUserProviderValue, useUsersProvider } from '../UsersPage';
 import { useSearchParams } from 'react-router-dom';
 import Pagination from '@/core/components/ui/pagination';
 import { formatCurrency } from '@/core/lib/utils/currency';
+import Tag from '@/core/components/ui/tag';
 
 export default function UsersTable() {
 
@@ -61,7 +62,11 @@ export default function UsersTable() {
               <Table.Cell>{curr.username}</Table.Cell>
               <Table.Cell>{curr.email}</Table.Cell>
               <Table.Cell>{formatCurrency(curr.dailyRate) || "-"}</Table.Cell>
-              <Table.Cell>{formatCurrency(curr.balance)}</Table.Cell>
+              <Table.Cell>  
+                <Tag variant={+curr.balance > 0 ? "green" : (+curr.balance < 0 ? "red" : "gray")}>
+                  {formatCurrency(curr.balance)}
+                </Tag>
+              </Table.Cell>
               <Table.Cell>{formatISODate(curr.createdAt)}</Table.Cell>
               <Table.Cell className='!flex justify-center'>
                 <KebabMenu
