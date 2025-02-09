@@ -76,4 +76,5 @@ export interface ITransactionPayload {
 export interface IMakeTransactionPayload {
   amount: number,
   specificType: TTreasuryMachineOperation
+  paymentMethod: TPaymentMethod,
 }

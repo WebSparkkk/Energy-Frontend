@@ -5,6 +5,7 @@ import { useSearchParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { useDebounce } from 'use-debounce';
 import { TInventoryProviderValue, useInventoryProvider } from '../InventoryPage';
+import DownloadButton from '@/core/components/ui/download-button';
 
 export default function InventoryToolbar() {
 
@@ -38,13 +39,19 @@ export default function InventoryToolbar() {
           className="w-full sm:w-64 pr-10"
         />
       </div>
-      <Button 
-        onClick={toggleAddInventoryFormVisibility} 
-        className="w-full sm:w-auto"
-      >
-        <Plus className="h-5 w-5 ml-2" />
-        إضافة منتج
-      </Button>
+      <div className="flex gap-2">
+        <Button 
+          onClick={toggleAddInventoryFormVisibility} 
+          className="w-full sm:w-auto"
+        >
+          <Plus className="h-5 w-5 ml-2" />
+          إضافة منتج
+        </Button>
+        <DownloadButton
+          label='تحميل ملف إكسل'
+          downloadURL='/clients/excel'
+        />
+      </div>
     </div>
   );
 }

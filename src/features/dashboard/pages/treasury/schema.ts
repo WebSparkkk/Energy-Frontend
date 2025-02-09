@@ -87,6 +87,16 @@ export const treasuryOperationSchema = z.object({
     required_error: 'نوع المعاملة مطلوب.',
     invalid_type_error: 'نوع المعاملة يجب أن يكون إما "income" أو "expense".',
   }),
+  paymentMethod: z.object({
+    label: z.string(),
+    value: z.enum([
+      PAYMENT_METHODS.CASH,
+      PAYMENT_METHODS.VISA
+    ])
+  }, {
+    required_error: 'طريقة الدفع مطلوبة.',
+    invalid_type_error: 'طريقة الدفع غير صالحة.',
+  }),
   amount: z.string().regex(/^\d+(\.\d{1,2})?$/, {
     message: 'المبلغ يجب أن يكون رقماً صالحاً.',
   }).nonempty({

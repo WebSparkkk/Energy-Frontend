@@ -9,7 +9,7 @@ import { z } from 'zod'
 import { treasuryOperationSchema } from '../schema'
 import { zodResolver } from '@hookform/resolvers/zod'
 import FormSelect from '@/core/components/form/form-select'
-import { TREASURY_MACHINE_OPERATION } from '../types'
+import { PAYMENT_METHODS, TREASURY_MACHINE_OPERATION } from '../types'
 
 type TFormFields = z.infer<typeof treasuryOperationSchema>
 
@@ -27,11 +27,12 @@ function TreasuryTransactionForm() {
     resolver: zodResolver(treasuryOperationSchema)
   })
 
-  function handleSubmit ({ amount, specificType }: TFormFields) {
+  function handleSubmit ({ amount, specificType, paymentMethod }: TFormFields) {
     if (!isSubmitting) {
       mutate({
         amount: Number(amount),
-        specificType: specificType.value
+        specificType: specificType.value,
+        paymentMethod:paymentMethod.value
       },{
         onSuccess:() => {
           setIsTransactionFormVisible(false)
@@ -67,6 +68,13 @@ function TreasuryTransactionForm() {
             label='الفئة'
             options={treasuryMachineOperations}
             name='specificType'
+          />
+
+          
+          <FormSelect
+            label='طريقة الدفع'
+            options={treasuryMachinePaymentMethods}
+            name='paymentMethod'
           />
           
           <DialogFooter>
@@ -105,4 +113,12 @@ export const treasuryMachineOperations: {
 }[] = [
   { value: TREASURY_MACHINE_OPERATION.CASH_DEPOSIT, label: 'إيداع نقدي' },
   { value: TREASURY_MACHINE_OPERATION.CASH_WITHDRAWAL, label: 'سحب نقدي' },
+];
+
+export const treasuryMachinePaymentMethods: {
+  value: PAYMENT_METHODS,
+  label: string
+}[] = [
+  { value: PAYMENT_METHODS.CASH, label: 'نقدي' },
+  { value: PAYMENT_METHODS.VISA, label: 'بطاقة' },
 ];

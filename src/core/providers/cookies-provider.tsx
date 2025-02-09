@@ -4,13 +4,13 @@ import { CookiesProvider, useCookies } from 'react-cookie';
 type TCookiesProviderValue = {
   setCookie:  (name: string, value: string, options?: any) => void,
   getCookie: (name: string) => string | undefined | null,
-  removeCookie: (name: string) => void,
+  removeCookie: (name: string, options?: any) => void,
 } | undefined
 
 const CookiesContext = createContext<TCookiesProviderValue>(undefined);
 
 function CookiesAccessProvider({ children }: TChildren) {
-  const [cookies, setCookie, removeCookie] = useCookies<string>();
+  const [cookies, setCookie, removeCookie] = useCookies<string>(["access_token"]);
 
   function getCookie(name: string) {
     return cookies[name];

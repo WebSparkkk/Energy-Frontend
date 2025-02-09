@@ -6,8 +6,8 @@ export function useLogout () {
   const navigate = useNavigate()
 
   function logout () {
-    removeCookie("user_role")
-    removeCookie("access_token")
+    removeCookie("user_role",{ path: "/"})
+    removeCookie("access_token",{ path: "/"})
     localStorage.removeItem("user")
     navigate("/")
   }

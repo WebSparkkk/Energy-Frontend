@@ -32,12 +32,12 @@ export function RecentLogs() {
 
                   <div className="flex gap-3 items-center">
                     <Tag 
-                      className="text-[.75rem] !py-1 w-fit"
+                      className="text-[.7rem] !py-1 w-fit"
                       variant={userRolesAssets[role].color}
                     >
                       {userRolesAssets[role].label}
                     </Tag>
-                    <p className="font-medium text-sm">{username}</p>
+                    <p className="font-medium text-[.75rem]">{username}</p>
                   </div>
                 </div>
               </div>

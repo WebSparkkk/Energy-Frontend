@@ -5,6 +5,7 @@ import { Input } from '@/core/components/form/input';
 import { useDebounce } from 'use-debounce';
 import { useSearchParams } from 'react-router-dom';
 import { TMembersProviderValue, useMembersProvider } from '../MembersPage';
+import DownloadButton from '@/core/components/ui/download-button';
 
 export default function SearchBar() {
 
@@ -39,13 +40,19 @@ export default function SearchBar() {
           className="w-full sm:w-64 pr-10"
         />
       </div>
-      <Button 
-        onClick={toggleAddMemberFormVisibility} 
-        className="w-full sm:w-auto"
-      >
-        <Plus className="h-5 w-5 ml-2" />
-        إضافة عضو
-      </Button>
+      <div className="gap-2 flex">
+        <Button 
+          onClick={toggleAddMemberFormVisibility} 
+          className="w-full sm:w-auto"
+        >
+          <Plus className="h-5 w-5 ml-2" />
+          إضافة عضو
+        </Button>
+        <DownloadButton
+          label='تحميل ملف إكسل'
+          downloadURL='/clients/excel'
+        />
+      </div>
     </div>
   );
 }
