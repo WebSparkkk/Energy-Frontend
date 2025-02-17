@@ -13,6 +13,7 @@ import { useSearchParams } from 'react-router-dom';
 import Pagination from '@/core/components/ui/pagination';
 import { formatCurrency } from '@/core/lib/utils/currency';
 import Tag from '@/core/components/ui/tag';
+import { userRolesAssets } from '../constants';
 
 export default function UsersTable() {
 
@@ -46,12 +47,13 @@ export default function UsersTable() {
   return (
     <div className='w-full'>
       <h3 className='mb-3 font-semibold'>قائمة المستخدمين</h3>
-      <Table columns={"grid-cols-[.7fr_.7fr_.7fr_.7fr_1fr_50px]"}>
+      <Table columns={"grid-cols-[.7fr_.7fr_.7fr_.7fr_200px_1fr_50px]"}>
         <Table.Header>
           <Table.Cell>المستخدم</Table.Cell>
           <Table.Cell>البريد الإلكتروني</Table.Cell>
           <Table.Cell>التقييم اليومي</Table.Cell>
           <Table.Cell>الرصيد</Table.Cell>
+          <Table.Cell>الوظيفه</Table.Cell>
           <Table.Cell>تاريخ الإنشاء</Table.Cell>
           <Table.Cell> </Table.Cell>
         </Table.Header>
@@ -65,6 +67,11 @@ export default function UsersTable() {
               <Table.Cell>  
                 <Tag variant={+curr.balance > 0 ? "green" : (+curr.balance < 0 ? "red" : "gray")}>
                   {formatCurrency(curr.balance)}
+                </Tag>
+              </Table.Cell>
+              <Table.Cell>
+                <Tag variant={userRolesAssets[curr.role].color}>
+                  {userRolesAssets[curr.role].label}
                 </Tag>
               </Table.Cell>
               <Table.Cell>{formatISODate(curr.createdAt)}</Table.Cell>

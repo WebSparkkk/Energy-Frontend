@@ -187,4 +187,8 @@ const roles: {
     value: USER_ROLES.EMPLOYEE, 
     label: 'موظف' 
   },
+  { 
+    value: USER_ROLES.CHIEF, 
+    label: 'شيف' 
+  },
 ];

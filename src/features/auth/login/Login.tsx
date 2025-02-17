@@ -109,7 +109,6 @@ export default function LoginPage() {
                 نسيت كلمة المرور؟
               </a>
             </div>
-
             <button
               type="submit"
               disabled={isLoading}

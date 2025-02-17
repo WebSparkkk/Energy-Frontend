@@ -88,13 +88,13 @@ export default function AddReservationForm() {
             name="fromDate"
             placeholder="وقت البداية"
             label="وقت البداية"
-            type="date"
+            type="datetime-local"
           />
           <FormInput
             name="toDate"
             placeholder="وقت النهاية"
             label="وقت النهاية"
-            type="date"
+            type="datetime-local"
           />
           <DialogFooter>
             <div className="flex justify-end gap-4">

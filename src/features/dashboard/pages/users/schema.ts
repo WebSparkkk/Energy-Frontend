@@ -9,7 +9,8 @@ export const userFormSchema = z.object({
       USER_ROLES.ADMIN,
       USER_ROLES.CASHIER,
       USER_ROLES.EMPLOYEE,
-      USER_ROLES.MANAGER
+      USER_ROLES.MANAGER,
+      USER_ROLES.CHIEF
     ]),
     label: z.string()
   },{
@@ -28,16 +29,13 @@ export const editUserFormSchema = z.object({
       USER_ROLES.ADMIN,
       USER_ROLES.CASHIER,
       USER_ROLES.EMPLOYEE,
-      USER_ROLES.MANAGER
+      USER_ROLES.MANAGER,
+      USER_ROLES.CHIEF
     ]),
     label: z.string()
   },{
     message: "الرجاء اختيار دور المستخدم"
   }),
-  password: z.string().optional().refine(value => {
-    if (value === "" || value === undefined)
-      return true
-    else if (value.length < 6) return false
-  },{ message: "كلمة المرور يجب أن تكون على الأقل 6 أحرف" }),
+  password: z.string().optional().refine(value => true),
   dailyRate: z.string().min(1, { message: "التقييم اليومي يجب أن يكون أكبر من أو يساوي 0" }),
 });

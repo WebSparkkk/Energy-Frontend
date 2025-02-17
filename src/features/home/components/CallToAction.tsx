@@ -7,7 +7,7 @@ export default function CallToAction() {
     <section className="relative py-24 overflow-hidden">
       <div className="absolute inset-0 bg-primary-700 opacity-95"></div>
       <div className="absolute inset-0" style={{
-        backgroundImage: "url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&q=80&w=2070')",
+        backgroundImage: "url('../../../../public/images/images/5.jpg')",
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         mixBlendMode: 'overlay'

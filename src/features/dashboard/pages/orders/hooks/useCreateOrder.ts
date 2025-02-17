@@ -16,8 +16,8 @@ export function useCreateOrder () {
       })
       toast.success("تم إنشاء الطلب بنجاح.")
     },
-    onError:() => {
-      toast.error("حدث خطأ، لا يمكن إنشاء الطلب")
+    onError:(res) => {
+      toast.error(res.message)
     }
   })
 }

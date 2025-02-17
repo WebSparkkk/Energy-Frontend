@@ -11,7 +11,6 @@ interface TestimonialProps {
 export default function TestimonialCard({ name, role, company, content, image }: TestimonialProps) {
   return (
     <div className="glass-card p-6 rounded-xl relative">
-      <Quote className="absolute top-6 right-6 h-8 w-8 text-primary-200 opacity-50" />
       <div className="flex items-start gap-4">
         <img
           src={image}

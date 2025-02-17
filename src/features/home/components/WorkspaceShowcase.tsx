@@ -5,25 +5,76 @@ const workspaces = [
   {
     title: 'المكاتب الخاصة',
     description: 'مساحات خاصة مجهزة بالكامل لفرق العمل',
-    image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1200',
+    image: "../../../../public/images/images/1.jpg",
     icon: <Briefcase className="h-6 w-6" />,
   },
   {
     title: 'مساحات العمل المشتركة',
     description: 'بيئة عمل حيوية للمستقلين ورواد الأعمال',
-    image: 'https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&q=80&w=1200',
+    image: "../../../../public/images/images/2.jpg",
     icon: <Users className="h-6 w-6" />,
   },
   {
     title: 'قاعات الاجتماعات',
     description: 'قاعات مجهزة للاجتماعات والعروض التقديمية',
-    image: 'https://images.unsplash.com/photo-1517502884422-41eaead166d4?auto=format&fit=crop&q=80&w=1200',
+    image: "../../../../public/images/images/27.jpg",
     icon: <Video className="h-6 w-6" />,
   },
   {
     title: 'مناطق الاستراحة',
     description: 'أماكن مريحة للاسترخاء وتناول القهوة',
-    image: 'https://images.unsplash.com/photo-1517502166878-35c93a0072f0?auto=format&fit=crop&q=80&w=1200',
+    image: "../../../../public/images/images/55.jpg",
+    icon: <Coffee className="h-6 w-6" />,
+  },
+
+  {
+    title: 'المكاتب الخاصة',
+    description: 'مساحات خاصة مجهزة بالكامل لفرق العمل',
+    image: "../../../../public/images/images/11.jpg",
+    icon: <Briefcase className="h-6 w-6" />,
+  },
+  {
+    title: 'مساحات العمل المشتركة',
+    description: 'بيئة عمل حيوية للمستقلين ورواد الأعمال',
+    image: "../../../../public/images/images/12.jpg",
+    icon: <Users className="h-6 w-6" />,
+  },
+  {
+    title: 'قاعات الاجتماعات',
+    description: 'قاعات مجهزة للاجتماعات والعروض التقديمية',
+    image: "../../../../public/images/images/25.jpg",
+    icon: <Video className="h-6 w-6" />,
+  },
+  {
+    title: 'مناطق الاستراحة',
+    description: 'أماكن مريحة للاسترخاء وتناول القهوة',
+    image: "../../../../public/images/images/50.jpg",
+    icon: <Coffee className="h-6 w-6" />,
+  },
+
+
+  {
+    title: 'المكاتب الخاصة',
+    description: 'مساحات خاصة مجهزة بالكامل لفرق العمل',
+    image: "../../../../public/images/images/7.jpg",
+    icon: <Briefcase className="h-6 w-6" />,
+  },
+  {
+    title: 'مساحات العمل المشتركة',
+    description: 'بيئة عمل حيوية للمستقلين ورواد الأعمال',
+    image: "../../../../public/images/images/8.jpg",
+    icon: <Users className="h-6 w-6" />,
+  },
+  {
+    title: 'قاعات الاجتماعات',
+    description: 'قاعات مجهزة للاجتماعات والعروض التقديمية',
+    image: "../../../../public/images/images/9.jpg",
+    icon: <Video className="h-6 w-6" />,
+  },
+  {
+    title: 'مناطق الاستراحة',
+    description: 'أماكن مريحة للاسترخاء وتناول القهوة',
+    image: "../../../../public/images/images/10.jpg",
     icon: <Coffee className="h-6 w-6" />,
   },
 ];
@@ -35,7 +86,7 @@ export default function WorkspaceShowcase() {
         <h2 className="text-4xl font-bold text-center text-gray-800 mb-4">مساحات العمل</h2>
         <p className="text-xl text-gray-600 text-center mb-12">اكتشف مجموعة متنوعة من المساحات المصممة لتلبية احتياجاتك</p>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-4 gap-8">
           {workspaces.map((workspace, index) => (
             <div key={index} className="group relative overflow-hidden rounded-xl">
               <div className="aspect-w-16 aspect-h-9">
@@ -49,7 +100,7 @@ export default function WorkspaceShowcase() {
                 <div className="absolute bottom-0 p-6 text-white">
                   <div className="flex items-center gap-3 mb-2">
                     {workspace.icon}
-                    <h3 className="text-2xl font-bold">{workspace.title}</h3>
+                    <h3 className="text-xl font-sans text-white">{workspace.title}</h3>
                   </div>
                   <p className="text-gray-200">{workspace.description}</p>
                 </div>

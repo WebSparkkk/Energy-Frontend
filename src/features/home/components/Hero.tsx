@@ -1,5 +1,6 @@
 import { Building2, ArrowLeft, Users, Coffee, Briefcase } from 'lucide-react';
 
+import heroImage from "../../../../public/images/images/11.jpg"
 const stats = [
   {
     icon: <Users className="h-6 w-6 text-secondary-600" />,
@@ -18,6 +19,7 @@ const stats = [
   }
 ];
 
+
 export default function Hero() {
   const whatsappLink = "https://wa.me/201069427088";
 
@@ -28,19 +30,20 @@ export default function Hero() {
           {/* Content Side */}
           <div className="flex-1 text-right">
             <div className="inline-flex items-center gap-2 bg-secondary-100 text-secondary-700 px-4 py-2 rounded-full mb-6">
-              <span className="text-sm font-semibold">مساحات عمل مبتكرة</span>
+              <span className="text-sm font-sans">مساحات عمل مبتكرة</span>
               <Building2 className="h-5 w-5" />
             </div>
             
-            <h1 className="text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+            <h1 className="text-5xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight">
               مساحات عمل 
               <span className="text-secondary-500"> عصرية </span>
               لإلهام إبداعك
             </h1>
             
             <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-              اكتشف مساحات عمل مجهزة بالكامل تجمع بين الراحة والإنتاجية. انضم إلى مجتمع من المبدعين والمهنيين في أرقى المواقع.
-            </p>
+            لو أنت طالب فى اخر سنة في الجامعة وهتبدأ تشتغل على مشروع التخرج أنت والتيم بتاعك أو لو عاوز تذاكر بره البيت في مكان مريح ومتوفر فيه انترنت وحاجات تساعدك على مذاكرتك، أو اتخرجت خلاص وبتدور على مكان تشتغل منه او تعمل اجتماعات مع التيم بتاعك لو انتو Startup  ولسة مش عندكو مكان تشتغلو منه. تقدروا بكل سهولة تأجروا meeting room  تشتغلو منها اليوم كله او حتى مكاتب منفصلة
+            كل دا هلاقية في energy space         
+               </p>
 
             <div className="flex flex-col sm:flex-row gap-4 mb-12">
               <a
@@ -82,7 +85,7 @@ export default function Hero() {
           <div className="flex-1 relative">
             <div className="relative z-10">
               <img
-                src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1200"
+                src={heroImage}
                 alt="مساحة عمل حديثة"
                 className="rounded-2xl shadow-2xl"
               />
